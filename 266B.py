@@ -4,12 +4,15 @@
 t = [int(x) for x in input().split(' ')]
 queue = list(input())
 time = t[1]
+counter = 0
 
-for i in range(len(queue)):
-  if queue[i] == 'B':
+while counter < len(queue):
+  if queue[counter] == 'B':
     index = queue.index('B')
     queue.pop(index)
     queue.insert(index+1, 'B')
+    counter += 1
+  counter += 1
     
 
 
