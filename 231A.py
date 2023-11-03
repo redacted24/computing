@@ -7,6 +7,8 @@ for i in range(b):
   contents = [int(x) for x in input().split()]
   content.append(contents)
 
+print(content)
+
 for i in range(len(content)):
   if content[i].count(1) >= 2:
     final += 1
