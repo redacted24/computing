@@ -12,7 +12,6 @@ for i in range(user):
     for j in range(user):
         if content[j][0] == content[i][1]:
             count += 1
-
 print(count)
 
 # Two Pointers for the win!
