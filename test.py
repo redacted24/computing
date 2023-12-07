@@ -1,5 +1,2 @@
-a = '{}'
-a = a.strip('{}')
-
-print(len(a))
+a, b = [1, 2]
 print(a)
