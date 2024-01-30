@@ -9,7 +9,7 @@ out = []
 
 print("Start -----------------------------------------")
 for i in range(1, length+1):
-    temp = pic[:i]
+    temp = pic[i:pic[i]-1]
     print(temp)
 
     if len(temp) % 2 == 0:
