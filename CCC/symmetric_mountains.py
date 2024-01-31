@@ -4,16 +4,41 @@
 length = int(input())
 mountains = [int(x) for x in input().split()]
 
-totalSum = []
-out = []
-count = 0
-pointer_A = 0
-pointer_B = 0
+sub = []
+start_pointer = 0
+end_pointer = 0
+a = 0
+b = 0
 
 
 for scan_length in range(1, length+1):
-    for groups in 
-    temp = mountains[pointer_A:pointer_A+scan_length-1]
+    while end_pointer <= len(mountains)-1:
+        temp = mountains[start_pointer:start_pointer+scan_length-1]
+        a = start_pointer
+        b = end_pointer
+
+        # Determine how many steps to "close" a crop
+        if scan_length % 2 == 0:
+            steps = scan_length // 2
+        else:
+            steps = (scan_length) // 2 + 1
+
+        # Calculate the asymmetric value
+        for j in steps:
+            sub.append(abs(temp[a]-temp[b]))
+            a += 1
+            b -= 1
+
+        # Move everything up
+
+        comp = []
+        print(f"Calculating: {temp[a]} - {temp[b]}")
+        comp.append(abs(temp[a] - temp[b]))
+
+        start_pointer += 1
+        end_pointer += start_pointer + scan_length - 1
+        
+
 
     
 
