@@ -20,11 +20,13 @@ for scan_length in range(1, length+1):
         # Determine how many steps to "close" a crop
         if scan_length % 2 == 0:
             steps = scan_length // 2
+        elif scan_length == 1:
+            steps = 1
         else:
             steps = (scan_length) // 2 + 1
 
         # Calculate the asymmetric value
-        for j in steps:
+        for j in range(steps):
             sub.append(abs(temp[a]-temp[b]))
             a += 1
             b -= 1
