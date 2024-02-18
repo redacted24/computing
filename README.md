@@ -1,3 +1,3 @@
 # computing
 
-A collection of my solved puzzles from the codeforces website problems.
+A collection of my solved puzzles from different places
