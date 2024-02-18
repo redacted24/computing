@@ -1,2 +1,1 @@
-a, b = [1, 2]
-print(a)
+print(' to be '.split())
