@@ -25,3 +25,5 @@ b = Link([2, 3, 0, 100])
 print(a.whichNode(2))
 a.loop(b, 2)
 print(a.nodeb_looped)
+
+# Unfinished
