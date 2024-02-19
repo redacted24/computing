@@ -11,7 +11,7 @@ class Puzzle:
     
     def __repr__(self):
         '''Prints the number of words found'''
-        return f'{str(self.count)} words found: {str(self.word)}'
+        return f'{str(self.count)}'
 
     def wordFinder(self, table_line):
         '''Main func to iterate through strings and find how many occurences of the substring appears'''
@@ -45,10 +45,10 @@ class Puzzle:
             
     def searchDiagonals(self):
         '''Search for Diagonals'''
-        output = []
-        tempstr = []
-        def rightLeft():
-            '''Search diagonals from right to left'''
+        def topDown():
+            '''Search diagonals from top to down'''
+            output = []
+            tempstr = []
             # Possible to simplify this into one while block?
             for i in range(self.width):
                 heightPt = 0
@@ -73,8 +73,10 @@ class Puzzle:
             self.straight(output)
             self.inverse(output)
         
-        def leftRight():
-            '''Search diagonals from left to right'''
+        def downTop():
+            '''Search diagonals from down to top'''
+            output = []
+            tempstr = []
             for i in range(self.width):
                 heightPt = self.height-1
                 tempstr.append(self.table[heightPt][i])
@@ -85,20 +87,39 @@ class Puzzle:
                 output.append(''.join(tempstr))
                 tempstr = []
             
-            for height in range(self.height, 1,-1):
+            for height in range(self.height-2, -1,-1):
                 widthPt = self.width - 1
                 tempstr.append(self.table[height][widthPt])
-                while height < self.height-1:
-                    height += 1
+                while height > 0:
+                    height -= 1
                     widthPt -= 1
                     tempstr.append(self.table[height][widthPt])
                 output.append(''.join(tempstr))
                 tempstr = []
-                
-        leftRight()
+            
+            self.straight(output)
+            self.inverse(output)
+
+        topDown()
+        downTop()
+        
+    def perpendiculars():
+        '''Find word in perpendicular strings'''
+        def straightPerpendiculars():
+            '''Find word in all straight perpendicular strings'''
+            
+
+        def diagonalPerpendiculars():
+            '''Find word in all diagonal perpendiculars'''
+        
+            
+
+    def run(self):
+        a.searchHorizontal()
+        a.searchVertical()
+        a.searchDiagonals()
+        # a.perpendiculars()
                 
 a = Puzzle()
-a.searchHorizontal()
-a.searchVertical()
-a.searchDiagonals()
+a.run()
 print(a)
