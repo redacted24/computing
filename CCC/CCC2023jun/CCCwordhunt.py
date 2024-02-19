@@ -102,7 +102,7 @@ class Puzzle:
 
         topDown()
         downTop()
-        
+
     def perpendiculars():
         '''Find word in perpendicular strings'''
         def straightPerpendiculars():
