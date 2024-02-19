@@ -11,7 +11,7 @@ class Puzzle:
     
     def __repr__(self):
         '''Prints the number of words found'''
-        return f'{str(self.count)} words found: {str(self.word)} table: {self.table}'
+        return f'{str(self.count)} words found: {str(self.word)}'
 
     def wordFinder(self, table_line):
         '''Main func to iterate through strings and find how many occurences of the substring appears'''
@@ -43,24 +43,62 @@ class Puzzle:
         self.straight(temp)
         self.inverse(temp)
             
-    def searchDiagonal(self):
+    def searchDiagonals(self):
         '''Search for Diagonals'''
-        diag = [[] for _ in range(self.width + self.height -1)]
-        bdiag = [[] for _ in range(len(diag))]
-        min_diag = -self.width+1
-        for x in range(self.height):
-            for y in range(self.width):
-                diag[x+y].append(self.table[x][y])
-                bdiag[x-y-min_diag].append(self.table[y][x])
-
-        self.straight(diag)
-        self.inverse(diag)
-        self.straight(bdiag)
-        self.inverse(bdiag)
-
-
+        output = []
+        tempstr = []
+        def rightLeft():
+            '''Search diagonals from right to left'''
+            # Possible to simplify this into one while block?
+            for i in range(self.width):
+                heightPt = 0
+                tempstr.append(self.table[heightPt][i])
+                while heightPt < self.height-1 and i > 0:
+                    heightPt += 1
+                    i -= 1 
+                    tempstr.append(self.table[heightPt][i])
+                output.append(''.join(tempstr))
+                tempstr = []
+            
+            for height in range(1,self.height):
+                widthPt = self.width - 1
+                tempstr.append(self.table[height][widthPt])
+                while height < self.height-1:
+                    height += 1
+                    widthPt -= 1
+                    tempstr.append(self.table[height][widthPt])
+                output.append(''.join(tempstr))
+                tempstr = []
+            
+            self.straight(output)
+            self.inverse(output)
+        
+        def leftRight():
+            '''Search diagonals from left to right'''
+            for i in range(self.width):
+                heightPt = self.height-1
+                tempstr.append(self.table[heightPt][i])
+                while heightPt > 0 and i > 0:
+                    heightPt -= 1
+                    i -= 1 
+                    tempstr.append(self.table[heightPt][i])
+                output.append(''.join(tempstr))
+                tempstr = []
+            
+            for height in range(self.height, 1,-1):
+                widthPt = self.width - 1
+                tempstr.append(self.table[height][widthPt])
+                while height < self.height-1:
+                    height += 1
+                    widthPt -= 1
+                    tempstr.append(self.table[height][widthPt])
+                output.append(''.join(tempstr))
+                tempstr = []
+                
+        leftRight()
+                
 a = Puzzle()
 a.searchHorizontal()
 a.searchVertical()
-a.searchDiagonal()
+a.searchDiagonals()
 print(a)
