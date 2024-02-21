@@ -1,3 +1,5 @@
+# Works up to perpendicular. I've realized it's probably not the best way to approach the problem lmao
+
 class Puzzle:
     def __init__(self):
         self.word = input()
@@ -109,8 +111,8 @@ class Puzzle:
             '''Find word in all straight perpendicular strings'''
             tempstr = []
             output = []
-            for i in range(self.height-1,0,-1):
-                offset = -1
+            for i in range(self.height-1):
+                offset = 1
                 pointer = 0
                 while offset < self.width:
                     while pointer <= offset:
@@ -140,7 +142,7 @@ class Puzzle:
         a.searchHorizontal()
         a.searchVertical()
         a.searchDiagonals()
-        a.perpendiculars()
+        # a.perpendiculars()
                 
 a = Puzzle()
 a.run()
