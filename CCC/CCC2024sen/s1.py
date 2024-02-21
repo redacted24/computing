@@ -1,4 +1,12 @@
-class Puzzle():
-    def __init__(self):
-        length = int(input())
-        content = [int(x) for x in input().split()]
+length = int(input())
+halved = length//2
+content = []
+number = 0
+for i in range(length):
+    content.append(input())
+
+for i in range(halved):
+    if content[i] == content[i+halved]:
+        number += 1
+
+print(number*2)
