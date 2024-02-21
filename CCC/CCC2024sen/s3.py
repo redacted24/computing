@@ -26,9 +26,6 @@ def solver():
         for i in samelmao(t):
             if i in b:
                 temp.append(i)
-        # for i in ordered(t):
-        #     if i in b:
-        #         temp.append(i)
         if ''.join(temp) == samelmao(b):
             return True
         return False
