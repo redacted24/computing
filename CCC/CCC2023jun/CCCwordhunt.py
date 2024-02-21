@@ -95,7 +95,7 @@ class Puzzle:
                     widthPt -= 1
                     tempstr.append(self.table[height][widthPt])
                 output.append(''.join(tempstr))
-                tempstr = []
+                tempstr.clear
             
             self.straight(output)
             self.inverse(output)
@@ -103,22 +103,44 @@ class Puzzle:
         topDown()
         downTop()
 
-    def perpendiculars():
+    def perpendiculars(self):
         '''Find word in perpendicular strings'''
         def straightPerpendiculars():
             '''Find word in all straight perpendicular strings'''
-            
+            tempstr = []
+            output = []
+            for i in range(self.height-1,0,-1):
+                offset = -1
+                pointer = 0
+                while offset < self.width:
+                    while pointer <= offset:
+                        tempstr.append(self.table[i][pointer])
+                        pointer += 1
+                    pointer = i+1
+                    while pointer < self.height:
+                        tempstr.append(self.table[pointer][offset])
+                        pointer += 1
+                    offset += 1
+                    output.append(''.join(tempstr))
+                    tempstr.clear()
+                    pointer = 0
+
+            self.straight(output)
+            self.inverse(output)
+            print(output)
 
         def diagonalPerpendiculars():
             '''Find word in all diagonal perpendiculars'''
-        
+            pass
+
+        straightPerpendiculars()
             
 
     def run(self):
         a.searchHorizontal()
         a.searchVertical()
         a.searchDiagonals()
-        # a.perpendiculars()
+        a.perpendiculars()
                 
 a = Puzzle()
 a.run()
