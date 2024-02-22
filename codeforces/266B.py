@@ -1,26 +1,15 @@
-# Queue at school
-# https://codeforces.com/problemset/problem/266/B
-
 x = [int(x) for x in input().split()]
-line = str(input())
-temp = ''
-seconds = x[1]
-people = x[0]
-i = 0
+line = [input()]
+for i in line[0]:
+    line.append(i)
+line = line[1:]
 
-for j in range(seconds):
-  print("Running loop")
-  while i < people:
-    if line[i+1] == 'G' and line[i] == 'B':
-      temp += 'GB'
-      i += 2
-    else:
-      temp += line[i]
-      i += 1
-      print(temp, i)
+for j in range(x[1]):
+    pointer = 0
+    while pointer < x[0]-1:
+        if line[pointer] == 'B' and line[pointer+1] == 'G':
+            line[pointer], line[pointer+1] = line[pointer + 1], line[pointer]
+            pointer += 1
+        pointer += 1
 
-  # reset
-  line = temp
-  i = 0
-
-print(temp)
+print(''.join(line))
