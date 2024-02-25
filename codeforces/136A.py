@@ -1,14 +1,14 @@
-length = int(input())
-coins = [int(x) for x in input().split()]
-coins.sort(reverse=True)
+length = input()
+content = [int(x) for x in input().split()]
 
-def findMin():
-    output = 1
-    for i in range(1,length):
-        if sum(coins[:i]) > sum(coins[i:]):
-            return output
-        output += 1
-    return output
-        
+d1 = {}
+out = []
 
-print(findMin())
+counter = 1
+for i in content:
+    d1[i] = str(counter)
+    counter += 1
+for key in sorted(d1):
+    out.append(d1[key])
+
+print(' '.join(out))
