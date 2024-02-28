@@ -1,18 +1,13 @@
 n,m = [int(x) for x in input().split()]
 numbers = [int(x) for x in input().split()]
-
 numbers.sort()
-print(numbers)
+best = float('infinity')
+# print(numbers)
 
-pointA = 0
-pointB = 1
-smallest = 1001
+for i in range(m-n+1):
+    best = min(best, numbers[i+n-1]-numbers[i])
+    # print('largest number:', numbers[i+n-1])
+    # print('smallest number: ', numbers[i])
+    # print(best, numbers[i+n-1]-numbers[i])
 
-while pointB < len(numbers) and pointA < len(numbers)-1:
-    a = numbers[pointB] - numbers[pointA]
-    if a <= smallest and a != 0:
-        smallest = a
-        pointB += 1
-    pointA += 1
-
-print(smallest)
+print(best)
